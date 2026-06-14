@@ -9,16 +9,18 @@ export const SITE = {
   email: "hellozabirkhan@gmail.com",
   phone: "+91 98765 43210",
   location: "India — Available Worldwide",
-  url: "https://zabirkhan.example.com", // update with real domain before deploy
+  url: "https://zabir-khan.vercel.app", // update if a custom domain is added later
 };
 
+// Top navigation — numbered labels matching the reference design.
+// `href` is a real route; `home` is "/" and others are dedicated pages.
 export const NAV_LINKS = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "portfolio", label: "Portfolio" },
-  { id: "services", label: "Services" },
-  { id: "achievements", label: "Achievements" },
-  { id: "contact", label: "Contact" },
+  { href: "/", number: "01", label: "Home" },
+  { href: "/about", number: "02", label: "About" },
+  { href: "/portfolio", number: "03", label: "Portfolio" },
+  { href: "/experience", number: "04", label: "Experience" },
+  { href: "/blog", number: "05", label: "Blog" },
+  { href: "/contact", number: "06", label: "Contact" },
 ] as const;
 
 export const SOCIAL_LINKS = [

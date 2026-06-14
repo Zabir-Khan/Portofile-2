@@ -100,14 +100,11 @@
   }
 
   .success-card {
-    @apply flex h-full flex-col items-center justify-center gap-4 border border-gold/[0.13] bg-[#181810] p-[clamp(28px,6vw,48px)] text-center;
+    @apply flex h-full flex-col items-center justify-center gap-4 border p-[clamp(28px,6vw,48px)] text-center;
   }
 
   .input-field {
-    @apply w-full border border-ink-border bg-ink-card px-[18px] py-3.5 font-body text-sm text-warm outline-none transition-colors duration-300;
-  }
-  .input-field::placeholder {
-    color: #555555;
+    @apply w-full border px-[18px] py-3.5 font-body text-sm outline-none transition-colors duration-300;
   }
   .input-field:focus {
     @apply border-gold/30;
@@ -131,6 +128,9 @@
   }
   .timeline-item:last-child::after {
     display: none;
+  }
+  .timeline-item.on-light::after {
+    @apply bg-ink/10;
   }
 
   .portfolio-item {

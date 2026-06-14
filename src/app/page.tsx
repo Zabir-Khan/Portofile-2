@@ -1,27 +1,23 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Hero from "@/components/sections/Hero";
-import About from "@/components/sections/About";
-import Stats from "@/components/sections/Stats";
-import Portfolio from "@/components/sections/Portfolio";
-import Services from "@/components/sections/Services";
-import Achievements from "@/components/sections/Achievements";
+import AboutPreview from "@/components/sections/AboutPreview";
+import PortfolioPreview from "@/components/sections/PortfolioPreview";
+import ExperiencePreview from "@/components/sections/ExperiencePreview";
 import Testimonials from "@/components/sections/Testimonials";
-import Contact from "@/components/sections/Contact";
+import ContactCTA from "@/components/sections/ContactCTA";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-ink text-warm">
+    <main className="min-h-screen">
       <Navbar />
       <Hero />
-      <About />
-      <Stats />
-      <Portfolio />
-      <Services />
-      <Achievements />
+      <AboutPreview />
+      <PortfolioPreview />
+      <ExperiencePreview />
       <Testimonials />
-      <Contact />
-      <Footer />
+      <ContactCTA />
+      <Footer variant="light" />
     </main>
   );
 }

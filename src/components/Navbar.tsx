@@ -1,17 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/data/site";
-import { useActiveSection } from "@/lib/useActiveSection";
-
-function scrollToId(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-}
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const activeSection = useActiveSection();
+  const pathname = usePathname();
 
   // Lock body scroll while the mobile menu is open
   useEffect(() => {
@@ -21,24 +18,14 @@ export default function Navbar() {
     };
   }, [menuOpen]);
 
-  const handleNavClick = (id: string) => {
-    scrollToId(id);
-    setMenuOpen(false);
-  };
-
   return (
     <>
-      <nav className="fixed inset-x-0 top-0 z-[100] flex h-[72px] items-center justify-between border-b border-ink-border bg-ink/90 px-5 backdrop-blur-xl sm:px-8 md:px-12">
+      <nav className="fixed inset-x-0 top-0 z-[100] flex h-[72px] items-center justify-between border-b border-ink-border bg-ink/90 px-5 text-warm backdrop-blur-xl sm:px-8 md:px-12">
         {/* Logo */}
-        <div
-          onClick={() => handleNavClick("home")}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") handleNavClick("home");
-          }}
-          role="button"
-          tabIndex={0}
+        <Link
+          href="/"
           aria-label="Go to home"
-          className="flex min-w-0 cursor-pointer items-baseline gap-0.5"
+          className="flex min-w-0 items-baseline gap-0.5 no-underline"
         >
           <span className="font-display text-[22px] font-black tracking-tight text-warm">
             ZK
@@ -46,35 +33,32 @@ export default function Navbar() {
           <span className="ml-1.5 hidden whitespace-nowrap text-[10px] uppercase tracking-[0.18em] text-gold sm:inline">
             Photographer
           </span>
-        </div>
+        </Link>
 
         {/* Desktop nav */}
-        <div role="navigation" aria-label="Main" className="hidden gap-9 md:flex">
-          {NAV_LINKS.map((l) => (
-            <span
-              key={l.id}
-              role="link"
-              tabIndex={0}
-              aria-current={activeSection === l.id ? "true" : undefined}
-              className={`nav-link${activeSection === l.id ? " active" : ""}`}
-              onClick={() => handleNavClick(l.id)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") handleNavClick(l.id);
-              }}
-            >
-              {l.label}
-            </span>
-          ))}
+        <div role="navigation" aria-label="Main" className="hidden gap-8 md:flex">
+          {NAV_LINKS.map((l) => {
+            const active = pathname === l.href;
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                aria-current={active ? "true" : undefined}
+                className={`text-[12px] font-medium uppercase tracking-[0.1em] no-underline transition-colors duration-300 ${
+                  active ? "text-gold" : "text-muted hover:text-warm"
+                }`}
+              >
+                {l.number}. {l.label}
+              </Link>
+            );
+          })}
         </div>
 
         {/* CTA + burger */}
         <div className="flex items-center gap-5">
-          <button
-            className="btn-primary hidden md:inline-flex"
-            onClick={() => handleNavClick("contact")}
-          >
+          <Link href="/contact" className="btn-primary hidden no-underline md:inline-flex">
             Hire Me
-          </button>
+          </Link>
           <button
             onClick={() => setMenuOpen((o) => !o)}
             aria-label="Toggle menu"
@@ -93,23 +77,22 @@ export default function Navbar() {
           aria-label="Mobile"
           className="animate-fadeIn fixed inset-0 z-[99] flex flex-col items-center justify-center gap-8 bg-ink/[0.98] backdrop-blur-xl md:hidden"
         >
-          {NAV_LINKS.map((l) => (
-            <span
-              key={l.id}
-              role="link"
-              tabIndex={0}
-              aria-current={activeSection === l.id ? "true" : undefined}
-              className={`font-display cursor-pointer text-[28px] ${
-                activeSection === l.id ? "text-gold" : "text-warm"
-              }`}
-              onClick={() => handleNavClick(l.id)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") handleNavClick(l.id);
-              }}
-            >
-              {l.label}
-            </span>
-          ))}
+          {NAV_LINKS.map((l) => {
+            const active = pathname === l.href;
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                aria-current={active ? "true" : undefined}
+                onClick={() => setMenuOpen(false)}
+                className={`font-display text-[28px] no-underline ${
+                  active ? "text-gold" : "text-warm"
+                }`}
+              >
+                {l.number}. {l.label}
+              </Link>
+            );
+          })}
         </div>
       )}
     </>

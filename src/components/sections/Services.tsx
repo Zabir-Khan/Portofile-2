@@ -10,7 +10,7 @@ export default function Services() {
     >
       <div className="mx-auto max-w-[1200px]">
         <div className="mb-16 text-center">
-          <p className="section-label">Services</p>
+          <p className="section-label">What I Offer</p>
           <h2 className="section-title">
             What I
             <br />

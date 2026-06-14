@@ -24,7 +24,7 @@ export default function Portfolio() {
       <div className="mx-auto max-w-[1200px]">
         <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
           <div>
-            <p className="section-label">Portfolio</p>
+            <p className="section-label">My Portfolio</p>
             <h2 className="section-title">
               Selected
               <br />

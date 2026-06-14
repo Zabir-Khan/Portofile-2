@@ -15,7 +15,12 @@ module.exports = {
           DEFAULT: "#C9A96E", // primary accent
           dim: "#9A7A4E", // gradient end / hover
         },
-        warm: "#F0EDE8", // primary text on dark
+        warm: "#F0EDE8", // primary text on dark / cream section background
+        cream: {
+          DEFAULT: "#F0EDE8", // light section background
+          alt: "#E8E3DA", // secondary light section background
+          border: "#DDD9D2", // hairline borders on light sections
+        },
         muted: "#888888", // secondary text
       },
       fontFamily: {

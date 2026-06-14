@@ -17,10 +17,10 @@ export default function Testimonials() {
   return (
     <RevealSection
       id="testimonials"
-      className="bg-ink-alt px-5 py-24 sm:px-8 md:px-12 lg:py-[100px]"
+      className="bg-ink-alt px-5 py-24 text-warm sm:px-8 md:px-12 lg:py-[100px]"
     >
       <div className="mx-auto max-w-[800px] text-center">
-        <p className="section-label">Testimonials</p>
+        <p className="section-label">05. Testimonial</p>
         <h2 className="section-title mb-16">
           Kind
           <br />
